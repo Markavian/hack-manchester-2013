@@ -37,8 +37,15 @@ class DataAdapter
 	
 	function onLoadComplete(e)
 	{
-		var data = Json.parse(loader.data);
-		onContentAvailable(data);
+		try
+		{
+			var data = Json.parse(loader.data);
+			onContentAvailable(data);
+		}
+		catch (e:Dynamic)
+		{
+			onContentUnavailable("Error parsing JSON.");
+		}
 	}
 	
 	function onLoadError(e:IOErrorEvent):Void
