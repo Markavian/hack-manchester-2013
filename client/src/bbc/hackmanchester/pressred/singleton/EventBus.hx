@@ -4,7 +4,7 @@ import bbc.hackmanchester.pressred.core.Signal;
 
 class EventBus
 {
-	public static var showSplashScreen:Signal;
+	public static var showSplashScreen = new Signal();
 	public static var showStreamScreen:Signal;
 	public static var showPersonScreen:Signal;
 	public static var showStarScreen:Signal;
