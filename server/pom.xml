@@ -22,8 +22,17 @@
       <version></version>
     </dependency>
    -->
+   	<dependency>
+  		<groupId>com.google.code.maven-play-plugin.org.playframework</groupId>
+  		<artifactId>play</artifactId>
+  		<version>1.2.3</version>
+	</dependency>
   </dependencies>
   
+  <properties>
+  	<github.global.server>github</github.global.server>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -36,8 +45,37 @@
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
       </plugin>
+      <plugin>
+            <groupId>com.github.github</groupId>
+            <artifactId>site-maven-plugin</artifactId>
+            <version>0.8</version>
+            <configuration>
+                <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
+                <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
+                <outputDirectory>${project.build.directory}/maven-repo</outputDirectory> <!-- matches distribution management repository url above -->
+                <branch>refs/heads/maven-repo</branch>                       <!-- remote branch name -->
+                <includes><include>**/*</include></includes>
+                <repositoryName>HackManchester</repositoryName>      <!-- github repo name -->
+                <repositoryOwner>Markavian</repositoryOwner>    <!-- github username  -->
+            </configuration>
+            <executions>
+              <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
+              <execution>
+                <goals>
+                  <goal>site</goal>
+                </goals>
+                <phase>deploy</phase>
+              </execution>
+            </executions>
+        </plugin>
     <!-- End -->
     </plugins>
   </build>
-
+<distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>file://${project.build.directory}/maven-repo</url>
+    </repository>
+</distributionManagement>
 </project>
