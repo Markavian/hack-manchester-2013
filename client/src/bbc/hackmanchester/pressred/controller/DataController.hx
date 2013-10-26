@@ -9,7 +9,7 @@ import bbc.hackmanchester.pressred.adapater.TimerAdapter;
  */
 class DataController
 {
-	public static var SERVER:String = "http://localhost/pressred/";
+	public static var SERVER:String = "http://env-9066129.j.layershift.co.uk/mango2/event";
 	
 	var globalTree:GlobalTree;
 	
@@ -24,7 +24,7 @@ class DataController
 	public function setup(tree:GlobalTree)
 	{
 		globalTree = tree;
-		timerAdapter.setup(SERVER + "time.json", globalTree.hackTimer);
+		timerAdapter.setup(SERVER, globalTree.hackTimer);
 	}
 	
 }
