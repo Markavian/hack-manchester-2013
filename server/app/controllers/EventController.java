@@ -21,7 +21,7 @@ public class EventController extends Controller {
     }
 
     private static String getDateTimeAsIsoString(Calendar dateTime) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd' HH:mm:ss");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
         return df.format(dateTime.getTime());
     }
