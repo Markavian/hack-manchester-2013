@@ -16,7 +16,8 @@ class SplashScreen extends Screen
 		super();
 		
 		timer = cast addUI(new TimerUI());
-		timer.artwork.x = Screen.WIDTH / 2 - timer.artwork.width / 2;
+		timer.artwork.x = Screen.WIDTH / 2;
+		timer.artwork.y = 100;
 	}
 	
 	public function setup(timerModel:TimerModel)
