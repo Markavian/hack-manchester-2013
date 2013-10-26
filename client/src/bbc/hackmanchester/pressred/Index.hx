@@ -10,7 +10,10 @@ import bbc.hackmanchester.pressred.singleton.EventBus;
 import bbc.hackmanchester.pressred.ui.TabUI;
 
 import flash.display.Sprite;
+import flash.display.Bitmap;
 import flash.events.Event;
+
+import openfl.Assets;
 
 /**
  * Index for main app.
@@ -20,6 +23,7 @@ class Index
 {
 	public var artwork:Sprite;
 	public var screens:Sprite;
+	public var slate:Bitmap;
 	
 	public var tree:GlobalTree;
 	public var screenController:ScreenController;
@@ -38,6 +42,9 @@ class Index
 	{
 		artwork = new Sprite();
 		screens = new Sprite();
+		
+		slate = new Bitmap(Assets.getBitmapData("img/background-slate.png"));
+		slate.scaleX = slate.scaleY = 0.5;
 	}
 	
 	public function setup()
@@ -46,7 +53,6 @@ class Index
 		
 		tabs = new TabUI();
 		tabs.setup();
-		artwork.addChild(tabs.artwork);
 		
 		screenController = new ScreenController();
 		screenController.setup(screens);
@@ -79,7 +85,9 @@ class Index
 		
 		registerEvents();
 		
+		artwork.addChild(slate);
 		artwork.addChild(screens);
+		artwork.addChild(tabs.artwork);
 	}
 	
 	function addScreen(screen:Screen):Screen
