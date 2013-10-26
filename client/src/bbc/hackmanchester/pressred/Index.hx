@@ -10,6 +10,7 @@ import bbc.hackmanchester.pressred.singleton.EventBus;
 import bbc.hackmanchester.pressred.ui.TabUI;
 
 import flash.display.Sprite;
+import flash.events.Event;
 
 /**
  * Index for main app.
@@ -81,6 +82,8 @@ class Index
 	
 	function registerEvents()
 	{
+		artwork.addEventListener(Event.ENTER_FRAME, onEnterFrame);
+		
 		EventBus.showSplashScreen.add(onShowSplashScreen);
 		EventBus.showStreamScreen.add(onShowStreamScreen);
 		EventBus.showPersonScreen.add(onShowPersonScreen);
@@ -115,7 +118,16 @@ class Index
 	
 	public function resize()
 	{
-		screenController.resize();
+		var newScale = artwork.stage.stageWidth / Screen.WIDTH;
+		if (artwork.scaleX != newScale)
+		{
+			artwork.scaleX = artwork.scaleY = newScale;
+		}
+	}
+	
+	function onEnterFrame(e)
+	{
+		resize();
 	}
 	
 }

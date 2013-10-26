@@ -22,8 +22,6 @@ class ScreenController
 	public function setup(layer:Sprite)
 	{
 		this.layer = layer;
-		
-		layer.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 	}
 	
 	public function addScreen(screen:Screen)
@@ -42,20 +40,6 @@ class ScreenController
 		}
 		
 		layer.addChild(screen.artwork);
-	}
-	
-	function onEnterFrame(e)
-	{
-		resize();  
-	}
-	
-	public function resize()
-	{
-		var newScale = layer.stage.stageWidth / Screen.WIDTH;
-		if (layer.scaleX != newScale)
-		{
-			layer.scaleX = layer.scaleY = newScale;
-		}
 	}
 	
 }

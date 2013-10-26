@@ -8,6 +8,7 @@ class TimerModel
 {
 	var now:Date;
 	var end:Date;
+	var error:String;
 
 	public function new() 
 	{
@@ -18,6 +19,12 @@ class TimerModel
 	public function setEndTime(endTime:String)
 	{
 		end = Date.fromString(endTime);
+		error = null;
+	}
+	
+	public function setError(message:String)
+	{
+		error = message;
 	}
 	
 	public function timeRemainingInSeconds():Float
@@ -30,6 +37,11 @@ class TimerModel
 	public function timeRemainingFormatted():String
 	{
 		now = Date.now();
+		
+		if (error != null)
+		{
+			return error;
+		}
 		
 		if (end == null)
 		{
