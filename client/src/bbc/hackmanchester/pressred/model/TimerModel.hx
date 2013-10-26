@@ -4,7 +4,7 @@ package bbc.hackmanchester.pressred.model;
  * Model for a timer
  * @author John Beech
  */
-class TimerModel
+class TimerModel extends BaseModel
 {
 	var now:Date;
 	var end:Date;
@@ -12,6 +12,8 @@ class TimerModel
 
 	public function new() 
 	{
+		super();
+		
 		now = Date.now();
 		end = null;
 	}

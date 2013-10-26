@@ -5,6 +5,7 @@ import bbc.hackmanchester.pressred.controller.DataController;
 import bbc.hackmanchester.pressred.screen.Screen;
 import bbc.hackmanchester.pressred.screen.SplashScreen;
 import bbc.hackmanchester.pressred.screen.ScreenWithTitle;
+import bbc.hackmanchester.pressred.screen.TimetableScreen;
 import bbc.hackmanchester.pressred.model.GlobalTree;
 import bbc.hackmanchester.pressred.singleton.EventBus;
 import bbc.hackmanchester.pressred.ui.TabUI;
@@ -35,7 +36,7 @@ class Index
 	public var personScreen:ScreenWithTitle;
 	public var starScreen:ScreenWithTitle;
 	public var awardScreen:ScreenWithTitle;
-	public var timetableScreen:ScreenWithTitle;
+	public var timetableScreen:TimetableScreen;
 	public var biogScreen:ScreenWithTitle;
 
 	public function new() 
@@ -77,8 +78,9 @@ class Index
 		awardScreen.setup("League Table", "img/awards-icon.png");
 		
 		// second level screens
-		timetableScreen = cast addScreen(new ScreenWithTitle());
+		timetableScreen = cast addScreen(new TimetableScreen());
 		timetableScreen.setup("Timetable", "img/time-table-icon.png");
+		timetableScreen.setupModel(tree.timetable);
 		
 		biogScreen = cast addScreen(new ScreenWithTitle());
 		biogScreen.setup("Who's Who?", "img/biog-icon.png");
