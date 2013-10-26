@@ -21,6 +21,18 @@
 	<assets path="assets/img" rename="img" />
 	<assets path="assets/fonts" rename="fonts" />
 	
+	<!-- icons for windows -->
+	<icon path="assets/icons/icon_16x.png" size="16" if="cpp" />
+	<icon path="assets/icons/icon_32x.png" size="32" if="cpp" />
+	<icon path="assets/icons/icon_48x.png" size="48" if="cpp" />
+	<icon path="assets/icons/icon_64x.png" size="64" if="cpp" />
+	
+	<!-- icons for android -->
+	<icon path="assets/icons/icon_36x.png" size="36" if="android" />
+	<icon path="assets/icons/icon_72x.png" size="72" if="android" />
+	<icon path="assets/icons/icon_96x.png" size="96" if="android" />
+	<icon path="assets/icons/icon_144x.png" size="144" if="android" />
+	
 	<!-- optimize output
 	<haxeflag name="-dce full" /> -->
 	

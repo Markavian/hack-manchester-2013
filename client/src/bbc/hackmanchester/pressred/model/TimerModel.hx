@@ -12,20 +12,17 @@ class TimerModel
 	public function new() 
 	{
 		now = Date.now();
-		end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 16, now.getMinutes(), now.getSeconds());
-		
-		trace(now.toString());
-		trace(end.toString());
-		trace(timeRemainingInSeconds());
+		end = null;
+	}
+	
+	public function setEndTime(endTime:String)
+	{
+		end = Date.fromString(endTime);
 	}
 	
 	public function timeRemainingInSeconds():Float
 	{
-		var time = Math.round(end.getTime() - now.getTime());
-		
-		#if flash
-		time = Math.round(time / 1000);
-		#end
+		var time = Math.round(end.getTime() - now.getTime()) / 1000;
 		
 		return time;
 	}
@@ -33,6 +30,11 @@ class TimerModel
 	public function timeRemainingFormatted():String
 	{
 		now = Date.now();
+		
+		if (end == null)
+		{
+			return "--:--:--:--";
+		}
 		
 		var seconds = timeRemainingInSeconds();
 		

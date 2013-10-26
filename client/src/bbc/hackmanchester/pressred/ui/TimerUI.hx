@@ -27,7 +27,7 @@ class TimerUI extends BaseUI
 		artwork.addChild(iconClock.artwork);
 		
 		textTime = Text.makeTextField("fonts/OpenSans-Bold.ttf", 84, 0x202020, TextFormatAlign.CENTER, true);
-		textTime.width = 600;
+		textTime.width = 500;
 		textTime.height = iconClock.artwork.height;
 		alignLeft(textTime, iconClock.artwork);
 		textTime.y = - textTime.height / 2;

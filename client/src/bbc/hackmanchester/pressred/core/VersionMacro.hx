@@ -14,5 +14,5 @@ class VersionMacro
         var fast = new haxe.xml.Fast(xml.firstElement());
  
         return Context.makeExpr(fast.node.meta.att.version, Context.currentPos());
-    }
+    } end macro
 }
