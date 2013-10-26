@@ -3,3 +3,4 @@
 require:
     - play
     - play -> jelastic 0.2
+    - play -> maven head
