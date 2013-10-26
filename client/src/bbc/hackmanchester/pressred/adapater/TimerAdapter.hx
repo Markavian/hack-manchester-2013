@@ -21,7 +21,7 @@ class TimerAdapter extends DataAdapter
 		this.endpoint = endpoint;
 		this.model = model;
 		
-		// Load on start-up
+		// Load shortly after start-up, to build suspense
 		Actuate.timer(1.5).onComplete(load);
 	}
 	

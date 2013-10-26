@@ -7,22 +7,14 @@ import flash.display.Sprite;
  * Basic screen
  * @author John Beech
  */
-class Screen
+class Screen extends BaseUI
 {
 	public static var WIDTH:Float = 800;
 	public static var HEIGHT:Float = 480;
 	
-	public var artwork:Sprite;
-
 	public function new() 
 	{
-		artwork = new Sprite();
-	}
-	
-	function addUI(ui:BaseUI):BaseUI
-	{
-		artwork.addChild(ui.artwork);
-		return ui;
+		super();
 	}
 	
 }

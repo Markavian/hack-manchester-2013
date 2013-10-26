@@ -30,4 +30,17 @@ class BaseUI
 		item.x = bounds.right;
 	}
 	
+	public function alignBottom(item:DisplayObject, to:DisplayObject)
+	{
+		var bounds:Rectangle = to.getBounds(artwork);
+		
+		item.y = bounds.bottom;
+	}
+	
+	function addUI(ui:BaseUI):BaseUI
+	{
+		artwork.addChild(ui.artwork);
+		return ui;
+	}
+	
 }
