@@ -43,4 +43,26 @@ class BaseUI
 		return ui;
 	}
 	
+	function move(x:Float, y:Float):BaseUI
+	{
+		artwork.x = x;
+		artwork.y = y;
+		
+		return this;
+	}
+	
+	function scale(scale:Float):BaseUI
+	{
+		artwork.scaleX = artwork.scaleY = scale;
+		
+		return this;
+	}
+	
+	function alpha(alpha:Float):BaseUI
+	{
+		artwork.alpha = alpha;
+		
+		return this;
+	}
+	
 }

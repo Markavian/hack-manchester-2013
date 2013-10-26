@@ -31,6 +31,8 @@ class Index
 	public var personScreen:ScreenWithTitle;
 	public var starScreen:ScreenWithTitle;
 	public var awardScreen:ScreenWithTitle;
+	public var timetableScreen:ScreenWithTitle;
+	public var biogScreen:ScreenWithTitle;
 
 	public function new() 
 	{
@@ -40,8 +42,6 @@ class Index
 	
 	public function setup()
 	{
-		EventBus.setup();
-		
 		tree = new GlobalTree();
 		
 		tabs = new TabUI();
@@ -54,6 +54,7 @@ class Index
 		dataController = new DataController();
 		dataController.setup(tree);
 		
+		// top level tab screens
 		splashScreen = cast addScreen(new SplashScreen());
 		splashScreen.setup(tree.hackTimer);
 		
@@ -68,6 +69,13 @@ class Index
 		
 		awardScreen = cast addScreen(new ScreenWithTitle());
 		awardScreen.setup("League Table", "img/awards-icon.png");
+		
+		// second level screens
+		timetableScreen = cast addScreen(new ScreenWithTitle());
+		timetableScreen.setup("Timetable", "img/time-table-icon.png");
+		
+		biogScreen = cast addScreen(new ScreenWithTitle());
+		biogScreen.setup("Who's Who?", "img/biog-icon.png");
 		
 		registerEvents();
 		
@@ -88,7 +96,9 @@ class Index
 		EventBus.showStreamScreen.add(onShowStreamScreen);
 		EventBus.showPersonScreen.add(onShowPersonScreen);
 		EventBus.showStarScreen.add(onShowStarScreen);
-		EventBus.showAwardsScreen.add(onShowAwardsScreen);
+		EventBus.showAwardsScreen.add(onShowAwardScreen);
+		EventBus.showTimetableScreen.add(onShowTimetableScreen);
+		EventBus.showBiogScreen.add(onShowBiogScreen);
 	}
 	
 	function onShowSplashScreen(model)
@@ -111,9 +121,19 @@ class Index
 		screenController.showScreen(starScreen);
 	}
 	
-	function onShowAwardsScreen(model)
+	function onShowAwardScreen(model)
 	{
 		screenController.showScreen(awardScreen);
+	}
+	
+	function onShowTimetableScreen(model)
+	{
+		screenController.showScreen(timetableScreen);
+	}
+	
+	function onShowBiogScreen(model)
+	{
+		screenController.showScreen(biogScreen);
 	}
 	
 	public function resize()

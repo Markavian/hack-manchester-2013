@@ -39,7 +39,7 @@ class TabUI extends BaseUI
 		for (button in tabButtons)
 		{
 			button.artwork.y = yoffset;
-			yoffset = yoffset + 90;
+			yoffset = yoffset + 85;
 		}
 	}
 	

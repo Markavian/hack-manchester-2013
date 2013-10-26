@@ -26,9 +26,9 @@ class ScreenWithTitle extends Screen
 		artwork.addChild(textTitle);
 		
 		icon = new BitmapUI();
-		icon.artwork.x = Screen.WIDTH - 90;
-		icon.artwork.y = Screen.HEIGHT - 90;
-		icon.artwork.scaleX = icon.artwork.scaleY = 0.5;
+		icon.move(Screen.WIDTH - 180, Screen.HEIGHT - 180);
+		icon.scale(0.8);
+		icon.alpha(0.2);
 		addUI(icon);
 	}
 	
