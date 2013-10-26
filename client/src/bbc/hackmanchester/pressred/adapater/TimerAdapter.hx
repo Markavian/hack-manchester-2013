@@ -30,4 +30,10 @@ class TimerAdapter extends DataAdapter
 		model.setEndTime(content.endTime);
 	}
 	
+	override private function onContentUnavailable(message:String):Void 
+	{
+		super.onContentUnavailable(message);
+		model.setError("NO TIME");
+	}
+	
 }

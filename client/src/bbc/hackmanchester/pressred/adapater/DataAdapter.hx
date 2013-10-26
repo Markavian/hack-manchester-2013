@@ -3,6 +3,8 @@ package bbc.hackmanchester.pressred.adapater;
 import flash.net.URLLoader;
 import flash.net.URLRequest;
 import flash.events.Event;
+import flash.events.ErrorEvent;
+import flash.events.IOErrorEvent;
 
 import haxe.Json;
 
@@ -19,6 +21,7 @@ class DataAdapter
 	{
 		loader = new URLLoader();
 		loader.addEventListener(Event.COMPLETE, onLoadComplete);
+		loader.addEventListener(IOErrorEvent.IO_ERROR, onLoadError);
 		endpoint = null;
 	}
 	
@@ -38,8 +41,19 @@ class DataAdapter
 		onContentAvailable(data);
 	}
 	
+	function onLoadError(e:IOErrorEvent):Void
+	{
+		e.stopImmediatePropagation();
+		onContentUnavailable(e.text);
+	}
+	
 	function onContentAvailable(content:Dynamic):Void
 	{
 		throw "The onContentAvailable method needs overriding in sub-class.";
+	}
+	
+	function onContentUnavailable(message:String):Void
+	{
+		trace(message);
 	}
 }
