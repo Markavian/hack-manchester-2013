@@ -27,7 +27,7 @@ class TimerUI extends BaseUI
 		artwork.addChild(iconClock.artwork);
 		
 		textTime = Text.makeTextField("fonts/OpenSans-Bold.ttf", 84, 0x202020, TextFormatAlign.CENTER, true);
-		textTime.width = 500;
+		textTime.width = 600;
 		textTime.height = iconClock.artwork.height;
 		alignLeft(textTime, iconClock.artwork);
 		textTime.y = - textTime.height / 2;
@@ -55,7 +55,7 @@ class TimerUI extends BaseUI
 			textTime.text = "00:00:00:00".toUpperCase();
 			return;
 		}
-		textTime.text = model.timeRemainingInSeconds + " seconds remaining";
+		textTime.text = model.timeRemainingFormatted();
 	}
 	
 }
