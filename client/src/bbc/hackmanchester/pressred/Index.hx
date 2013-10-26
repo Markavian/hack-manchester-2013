@@ -58,16 +58,16 @@ class Index
 		splashScreen.setup(tree.hackTimer);
 		
 		streamScreen = cast addScreen(new ScreenWithTitle());
-		streamScreen.setup("Streams");
+		streamScreen.setup("Streams", "img/stream-icon.png");
 		
 		personScreen = cast addScreen(new ScreenWithTitle());
-		personScreen.setup("Personal Info");
+		personScreen.setup("Personal Info", "img/person-icon.png");
 		
 		starScreen = cast addScreen(new ScreenWithTitle());
-		starScreen.setup("Starred Items");
+		starScreen.setup("Starred Items", "img/star-icon.png");
 		
 		awardScreen = cast addScreen(new ScreenWithTitle());
-		awardScreen.setup("League Table");
+		awardScreen.setup("League Table", "img/awards-icon.png");
 		
 		registerEvents();
 		

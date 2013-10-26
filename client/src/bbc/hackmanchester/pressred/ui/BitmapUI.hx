@@ -13,14 +13,18 @@ class BitmapUI extends BaseUI
 {
 	var bitmap:Bitmap;
 
-	public function new(asset:String) 
+	public function new(asset:String=null) 
 	{
 		super();
 		
-		var asset = Assets.getBitmapData(asset);
-		bitmap = new Bitmap(asset, PixelSnapping.AUTO, true);
-		
+		bitmap = new Bitmap(null, PixelSnapping.AUTO, true);
+		setup(asset);
 		artwork.addChild(bitmap);
+	}
+	
+	public function setup(asset:String)
+	{
+		bitmap.bitmapData = (asset != null) ? Assets.getBitmapData(asset) : null;
 		center(bitmap);
 	}
 	
