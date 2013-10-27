@@ -27,7 +27,7 @@ class TimetableRowModel extends BaseModel
 			return;
 		
 		this.time = Reflect.hasField(object, "time") ? object.time : "";
-		this.name = Reflect.hasField(object, "name") ? object.name : "";
+		this.name = Reflect.hasField(object, "title") ? object.title : "";
 	}
 	
 }

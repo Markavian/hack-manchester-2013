@@ -16,6 +16,9 @@ class TimetableModel extends BaseModel
 		if (object == null)
 			return;
 			
+		// step down from days to day
+		object = object[0];
+			
 		if (Reflect.hasField(object, "events"))
 		{
 			var eventsArray:Array<Dynamic> = object.events;
