@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.URLEncoder;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,59 +33,42 @@ import com.googlecode.charts4j.Shape;
 public class Graph {
 	public String graph;
 
-	public Graph() {
-		final int NUM_POINTS = 25;
-		final double[] competition = new double[NUM_POINTS];
+	public Graph(List<Integer> commitsPerHour) {
+		final int NUM_POINTS = commitsPerHour.size();
+		
 		final double[] mywebsite = new double[NUM_POINTS];
 		for (int i = 0; i < NUM_POINTS; i++) {
-			competition[i] = 100 - (Math.cos(30 * i * Math.PI / 180) * 10 + 50)
-					* i / 20;
-			mywebsite[i] = (Math.cos(30 * i * Math.PI / 180) * 10 + 50) * i
-					/ 20;
+			mywebsite[i] = commitsPerHour.get(i)*10;
+			
 		}
 		Line line1 = Plots.newLine(Data.newData(mywebsite),
-				Color.newColor("CA3D05"), "My Website.com");
+				Color.newColor("CA3D05"), "PressRed");
 		line1.setLineStyle(LineStyle.newLineStyle(3, 1, 0));
 		line1.addShapeMarkers(Shape.DIAMOND, Color.newColor("CA3D05"), 12);
 		line1.addShapeMarkers(Shape.DIAMOND, Color.WHITE, 8);
-		Line line2 = Plots.newLine(Data.newData(competition), SKYBLUE,
-				"Competition.com");
-		line2.setLineStyle(LineStyle.newLineStyle(3, 1, 0));
-		line2.addShapeMarkers(Shape.DIAMOND, SKYBLUE, 12);
-		line2.addShapeMarkers(Shape.DIAMOND, Color.WHITE, 8);
-
+		
+		
 		// Defining chart.
-		LineChart chart = GCharts.newLineChart(line1, line2);
+		LineChart chart = GCharts.newLineChart(line1);
 		chart.setSize(600, 450);
-		chart.setTitle("Web Traffic|(in billions of hits)", WHITE, 14);
-		chart.addHorizontalRangeMarker(40, 60, Color.newColor(RED, 30));
-		chart.addVerticalRangeMarker(70, 90, Color.newColor(GREEN, 30));
-		chart.setGrid(25, 25, 3, 2);
+		chart.setTitle("Git Commits per hour", WHITE, 14);
+		chart.setGrid(5, 5, 10, 1);
 
 		// Defining axis info and styles
 		AxisStyle axisStyle = AxisStyle.newAxisStyle(WHITE, 12,
 				AxisTextAlignment.CENTER);
-		AxisLabels xAxis = AxisLabelsFactory.newAxisLabels("Nov", "Dec", "Jan",
-				"Feb", "Mar");
-		xAxis.setAxisStyle(axisStyle);
-		AxisLabels xAxis2 = AxisLabelsFactory.newAxisLabels("2007", "2007",
-				"2008", "2008", "2008");
+		AxisLabels xAxis2 = AxisLabelsFactory.newAxisLabels("14:00", "18:00",
+				"02:00", "09:00", "14:00");
 		xAxis2.setAxisStyle(axisStyle);
-		AxisLabels yAxis = AxisLabelsFactory.newAxisLabels("", "25", "50",
-				"75", "100");
-		AxisLabels xAxis3 = AxisLabelsFactory.newAxisLabels("Month", 50.0);
-		xAxis3.setAxisStyle(AxisStyle.newAxisStyle(WHITE, 14,
-				AxisTextAlignment.CENTER));
+		AxisLabels yAxis = AxisLabelsFactory.newAxisLabels("", "2", "5");
 		yAxis.setAxisStyle(axisStyle);
-		AxisLabels yAxis2 = AxisLabelsFactory.newAxisLabels("Hits", 50.0);
+		AxisLabels yAxis2 = AxisLabelsFactory.newAxisLabels("Hits", 2);
 		yAxis2.setAxisStyle(AxisStyle.newAxisStyle(WHITE, 14,
 				AxisTextAlignment.CENTER));
 		yAxis2.setAxisStyle(axisStyle);
 
 		// Adding axis info to chart.
-		chart.addXAxisLabels(xAxis);
 		chart.addXAxisLabels(xAxis2);
-		chart.addXAxisLabels(xAxis3);
 		chart.addYAxisLabels(yAxis);
 		chart.addYAxisLabels(yAxis2);
 

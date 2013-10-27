@@ -3,4 +3,5 @@
   <allow-access-from domain="mkv25.net" />
   <site-control permitted-cross-domain-policies="master-only"/>
   <allow-http-request-headers-from domain="*.mkv25.net" headers="*" secure="true"/>
+  <allow-http-request-headers-from domain="chart.apis.google.com" headers="*" secure="true"/>
 </cross-domain-policy>

@@ -7,6 +7,9 @@ import org.joda.time.DateTime;
 import play.libs.WS;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Activity {
     // template matches this API: GET /repos/:owner/:repo/events
@@ -17,7 +20,8 @@ public class Activity {
     public int numberOfCommitsInLastHour;
     public int numberOfCommitsInLastThreeHours;
     public int numberOfCommitsSinceStartOfEvent;
-
+    public List<Integer> commitsPerHour;
+    
     private String owner;
     private String repo;
 
@@ -28,6 +32,7 @@ public class Activity {
         this.numberOfCommitsInLastHour = 0;
         this.numberOfCommitsInLastThreeHours = 0;
         this.numberOfCommitsSinceStartOfEvent = 0;
+        this.commitsPerHour = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
     }
 
     public void update() {
@@ -48,6 +53,11 @@ public class Activity {
             }
         }
     }
+    
+    public String getGraph() {
+    	update();
+    	return new Graph(commitsPerHour).graph;
+    }
 
     private void updateFieldsFrom(DateTime commitDateTime) {
         if (mostRecentCommit == null) {
@@ -59,6 +69,8 @@ public class Activity {
         DateTime threeHoursAgo = now.minusHours(3);
         DateTime startOfEvent = Event.getEvent().startTime;
 
+        commitsPerHour.set(commitDateTime.getHourOfDay(), commitsPerHour.get(commitDateTime.getHourOfDay())+1);
+       
         if (commitDateTime.isAfter(oneHourAgo)) {
             numberOfCommitsInLastHour++;
         }
