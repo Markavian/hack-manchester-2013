@@ -6,6 +6,7 @@
 GET     /                                       Application.index
 GET     /event                                  EventController.get
 GET     /timetable                              TimetableController.get
+GET     /news                                   NewsController.get
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
