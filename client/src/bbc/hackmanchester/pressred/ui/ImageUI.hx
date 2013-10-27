@@ -25,8 +25,9 @@ class ImageUI extends BaseUI
 	
 	private var targetWidth:Int;
 	private var targetHeight:Int;
+	private var targetPadding:Int;
 	
-	public function new (imageURL:String, width:Int = 240, height:Int = 180)
+	public function new (imageURL:String, width:Int = 400, height:Int = 300, padding:Int = 5)
 	{
 		super ();
 		
@@ -34,10 +35,12 @@ class ImageUI extends BaseUI
 		loader = new Loader();
 		targetWidth = width;
 		targetHeight = height;
+		targetPadding = padding;
 		
+		var DP:Int = padding * 2;
 		var g:Graphics = artwork.graphics;
-		g.beginFill(0x555555, 0.6);
-		g.drawRect(0, 0, targetWidth, targetHeight);
+		g.beginFill(0x202020, 1.0);
+		g.drawRect(0, 0, targetWidth + DP, targetHeight + DP);
 		
 		// Prepare for loader.load() events
 		loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onComplete);
@@ -84,8 +87,10 @@ class ImageUI extends BaseUI
 			artwork.addChild(b);
 			
 			// Size the new one
-			artwork.width = targetWidth;
-			artwork.height = targetHeight;
+			b.x = targetPadding;
+			b.y = targetPadding;
+			b.width = targetWidth;
+			b.height = targetHeight;
 		} 
 			
 		// Loading process is now complete

@@ -4,6 +4,7 @@ import bbc.hackmanchester.pressred.adapater.NewsAdapter;
 import bbc.hackmanchester.pressred.model.GlobalTree;
 import bbc.hackmanchester.pressred.adapater.EventAdapter;
 import bbc.hackmanchester.pressred.adapater.TimetableAdapter;
+import bbc.hackmanchester.pressred.adapater.GraphAdapter;
 
 /**
  * Handles loading and centralisation of data
@@ -18,6 +19,7 @@ class DataController
 	var eventAdapter:EventAdapter;
 	var timetableAdapter:TimetableAdapter;
 	var newsAdapter:NewsAdapter;
+	var graphAdapter:GraphAdapter;
 
 	public function new() 
 	{
@@ -26,6 +28,7 @@ class DataController
 		eventAdapter = new EventAdapter();
 		timetableAdapter = new TimetableAdapter();
 		newsAdapter = new NewsAdapter();
+		graphAdapter = new GraphAdapter();
 	}
 	
 	public function setup(tree:GlobalTree)
@@ -35,6 +38,7 @@ class DataController
 		eventAdapter.setup(SERVER + "/event", globalTree.eventModel);
 		timetableAdapter.setup(SERVER + "/timetable", globalTree.timetable);
 		newsAdapter.setup(SERVER + "/news", globalTree.news);
+		graphAdapter.setup(SERVER + "/graph", globalTree.graphModel);
 	}
 	
 }

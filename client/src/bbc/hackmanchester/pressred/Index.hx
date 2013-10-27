@@ -39,7 +39,7 @@ class Index
 	public var streamScreen:NewsScreen;
 	public var personScreen:ScreenWithTitle;
 	public var starScreen:ScreenWithTitle;
-	public var awardScreen:GraphScreen;
+	public var graphScreen:GraphScreen;
 	public var timetableScreen:TimetableScreen;
 	public var biogScreen:ScreenWithTitle;
 
@@ -82,10 +82,9 @@ class Index
 		starScreen = cast addScreen(new ScreenWithTitle());
 		starScreen.setup("Starred Items", "img/star-icon.png");
 		
-		awardScreen = cast addScreen(new GraphScreen());
-		awardScreen.setupModel(tree.eventModel);
-		awardScreen.setup("League Table", "img/awards-icon.png");
-		
+		graphScreen = cast addScreen(new GraphScreen());
+		graphScreen.setupModel(tree.graphModel);
+		graphScreen.setup("Activity Graph", "img/awards-icon.png");
 		
 		// second level screens
 		timetableScreen = cast addScreen(new TimetableScreen());
@@ -143,7 +142,7 @@ class Index
 	
 	function onShowAwardScreen(model)
 	{
-		screenController.showScreen(awardScreen);
+		screenController.showScreen(graphScreen);
 	}
 	
 	function onShowTimetableScreen(model)
