@@ -15,6 +15,7 @@ class NewsRowUI extends BaseUI
 {
 	var textTime:TextField;
 	var textText:TextField;
+	var image:ImageUI;
 	
 	public function new() 
 	{
@@ -35,8 +36,20 @@ class NewsRowUI extends BaseUI
 	
 	public function setup(model:NewsItemModel)
 	{
+		if (image != null)
+		{
+			artwork.removeChild(image.artwork);
+		}
+			
 		textTime.text = model.time;
 		textText.htmlText = model.text;
+		
+		if (model.mediaUrl != "")
+		{
+			image = new ImageUI(model.mediaUrl);
+			artwork.addChild(image.artwork);
+			alignBottom(image.artwork, textText);
+		}
 	}
 	
 }

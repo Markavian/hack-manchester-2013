@@ -67,7 +67,6 @@ class Screen extends BaseUI
 	{
 		var endY:Float = y;
 		velocityY = - (startY - endY);
-		trace("End throw " + velocityY);
 	}
 	
 	function update()
@@ -102,7 +101,6 @@ class Screen extends BaseUI
 			{
 				velocityY = 0;
 			}
-			trace("Velocity " + velocityY + " artwork " + artwork.y + " " + bounds.height + " " + Screen.HEIGHT);
 		}
 	}
 	
