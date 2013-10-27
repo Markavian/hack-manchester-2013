@@ -3,6 +3,7 @@ package models;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import data.NewsItem;
 import org.apache.commons.codec.binary.Base64;
 import play.libs.WS;
 

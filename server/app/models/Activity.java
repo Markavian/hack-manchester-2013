@@ -6,4 +6,8 @@ public class Activity {
     public void update() {
         numberOfCommits = (int) Math.random() % 100 + 1;
     }
+
+    public void foo() {
+//        GET /repos/:owner/:repo/events
+    }
 }
