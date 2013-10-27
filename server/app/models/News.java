@@ -7,6 +7,7 @@ import data.NewsItem;
 import org.apache.commons.codec.binary.Base64;
 import play.libs.WS;
 
+import java.net.URLEncoder;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public class News {
     static private final String CONSUMER_KEY = "wsewp05A7bh5BjpD7SPUQ";
     static private final String CONSUMER_SECRET = "aRvcRE6NxvwRjjIj8HqYD0e6WGBValidBIVdEzn4Tx4";
+    public static final String TWITTER_SEARCH_URL_TEMPLATE = "https://api.twitter.com/1.1/search/tweets.json?src=typd&q={0}";
 
     public String account;
     public List<NewsItem> newsItems;
@@ -26,19 +28,18 @@ public class News {
         String bearerKey = authenticateAndGetBearerKey();
 
         if (bearerKey != null) {
-            getTwitterEntriesFor(bearerKey);
+            getTwitterEntriesFor("#HackManchester", bearerKey);
         }
     }
 
-    private List<NewsItem> getTwitterEntriesFor(String bearerKey) {
+    private List<NewsItem> getTwitterEntriesFor(String searchTerm, String bearerKey) {
         newsItems = new ArrayList<NewsItem>();
 
-        WS.WSRequest getRequest = WS.url("https://api.twitter.com/1.1/search/tweets.json?src=typd&q=%23hackmanchester");
+        String url = MessageFormat.format(TWITTER_SEARCH_URL_TEMPLATE, URLEncoder.encode(searchTerm));
+
+        WS.WSRequest getRequest = WS.url(url);
         getRequest.setHeader("Authorization", "Bearer " + bearerKey);
         WS.HttpResponse result = getRequest.get();
-
-//        System.out.println("Result of twitter search:");
-//        System.out.println(result.getStatusText());
 
         JsonElement contentJson = result.getJson();
         if (contentJson.isJsonObject()) {
@@ -48,7 +49,7 @@ public class News {
             for (JsonElement element: statusesArray) {
                 JsonObject jsonObject = element.getAsJsonObject();
 
-                newsItems.add(new NewsItem(jsonObject.get("created_at").toString(), jsonObject.get("text").toString()));
+                newsItems.add(new NewsItem(jsonObject.get("created_at").getAsString(), jsonObject.get("text").toString()));
             }
         }
 
@@ -67,11 +68,6 @@ public class News {
         postRequest.setParameter("grant_type", "client_credentials");
 
         WS.HttpResponse result = postRequest.post();
-//
-//        System.out.println("Result of requesting bearer token:");
-//        System.out.println(result.getStatusText());
-//        System.out.println(result.getStatus());
-//        System.out.println(result.getJson());
 
         JsonElement contentJson = result.getJson();
         if (contentJson.isJsonObject()) {

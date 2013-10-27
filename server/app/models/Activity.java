@@ -41,11 +41,9 @@ public class Activity {
             for (JsonElement githubEventJson: jsonArray) {
                 JsonObject gitHubEventObject = githubEventJson.getAsJsonObject();
                 JsonElement createdAtElement = gitHubEventObject.get("created_at");
-                String foo = createdAtElement.getAsString();
+//                System.out.println(createdAtElement.getAsString());
 
-                System.out.println(foo);
-
-                DateTime dateTime = new DateTime(foo);
+                DateTime dateTime = new DateTime(createdAtElement.getAsString());
                 updateFieldsFrom(dateTime);
             }
         }
