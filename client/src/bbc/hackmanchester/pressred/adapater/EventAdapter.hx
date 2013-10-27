@@ -1,22 +1,22 @@
 package bbc.hackmanchester.pressred.adapater;
 
-import bbc.hackmanchester.pressred.model.TimerModel;
+import bbc.hackmanchester.pressred.model.EventModel;
 import motion.Actuate;
 
 /**
  * Adapts timer data to the timer model
  * @author John Beech
  */
-class TimerAdapter extends DataAdapter
+class EventAdapter extends DataAdapter
 {
-	var model:TimerModel;
+	var model:EventModel;
 
 	public function new() 
 	{
 		super();
 	}
 	
-	public function setup(endpoint:String, model:TimerModel)
+	public function setup(endpoint:String, model:EventModel)
 	{
 		this.endpoint = endpoint;
 		this.model = model;
@@ -28,6 +28,9 @@ class TimerAdapter extends DataAdapter
 	override private function onContentAvailable(content:Dynamic):Void
 	{
 		model.setEndTime(content.endTime);
+		model.graph = content.graph;
+		
+		model.updated.dispatch(model);
 	}
 	
 	override private function onContentUnavailable(message:String):Void 

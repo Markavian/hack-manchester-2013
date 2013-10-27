@@ -4,11 +4,12 @@ package bbc.hackmanchester.pressred.model;
  * Model for a timer
  * @author John Beech
  */
-class TimerModel extends BaseModel
+class EventModel extends BaseModel
 {
 	var now:Date;
 	var end:Date;
 	var error:String;
+	public var graph:String;
 
 	public function new() 
 	{

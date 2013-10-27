@@ -1,4 +1,5 @@
 package bbc.hackmanchester.pressred.screen;
+import bbc.hackmanchester.pressred.model.EventModel;
 import bbc.hackmanchester.pressred.ui.ImageUI;
 
 /**
@@ -15,14 +16,19 @@ class GraphScreen extends ScreenWithTitle
 		super();
 	}
 	
-	public function setupModel(imageURL :String):Void
+	public function setupModel(eventModel:EventModel):Void
+	{
+		eventModel.updated.add(onModelUpdated);
+	}
+	
+	public function onModelUpdated(model:EventModel)
 	{
 		if (image != null)
 		{
 			artwork.removeChild(image.artwork);
 		}
 		
-		image = new ImageUI(imageURL, 400, 300);
+		image = new ImageUI(model.graph, 400, 300);
 		addUI(image);
 		image.move(120, 150);
 	}

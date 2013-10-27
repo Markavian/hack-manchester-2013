@@ -1,6 +1,6 @@
 package bbc.hackmanchester.pressred.screen;
 
-import bbc.hackmanchester.pressred.model.TimerModel;
+import bbc.hackmanchester.pressred.model.EventModel;
 import bbc.hackmanchester.pressred.ui.TimerUI;
 import bbc.hackmanchester.pressred.ui.ButtonUI;
 import bbc.hackmanchester.pressred.singleton.EventBus;
@@ -33,9 +33,9 @@ class SplashScreen extends Screen
 		biogButton.clicked.add(EventBus.showBiogScreen.dispatch);
 	}
 	
-	public function setup(timerModel:TimerModel)
+	public function setup(eventModel:EventModel)
 	{
-		timer.setup(timerModel);
+		timer.setup(eventModel);
 	}
 	
 }

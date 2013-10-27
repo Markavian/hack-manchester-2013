@@ -6,7 +6,7 @@ package bbc.hackmanchester.pressred.model;
  */
 class GlobalTree extends BaseModel
 {
-	public var hackTimer:TimerModel;
+	public var eventModel:EventModel;
 	public var timetable:TimetableModel;
 	public var news:NewsModel;
 
@@ -14,7 +14,7 @@ class GlobalTree extends BaseModel
 	{
 		super();
 		
-		hackTimer = new TimerModel();
+		eventModel = new EventModel();
 		timetable = new TimetableModel();
 		news = new NewsModel();
 	}

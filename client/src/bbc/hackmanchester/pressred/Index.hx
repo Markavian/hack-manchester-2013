@@ -70,7 +70,7 @@ class Index
 		
 		// top level tab screens
 		splashScreen = cast addScreen(new SplashScreen());
-		splashScreen.setup(tree.hackTimer);
+		splashScreen.setup(tree.eventModel);
 		
 		streamScreen = cast addScreen(new NewsScreen());
 		streamScreen.setup("News", "img/stream-icon.png");
@@ -83,7 +83,7 @@ class Index
 		starScreen.setup("Starred Items", "img/star-icon.png");
 		
 		awardScreen = cast addScreen(new GraphScreen());
-		awardScreen.setupModel("http://chart.apis.google.com/chart?cht=lc&chxp=1,2.0&chls=3,1,0&chxt=y,y,x&chs=600x450&chco=CA3D05&chdl=PressRed&chts=FFFFFF,14&chxr=1,0.0,100.0&chg=5.0,5.0,10,1&chtt=Git+Commits+per+hour&chm=d,CA3D05,0,-1,12,0|d,FFFFFF,0,-1,8,0&chf=bg,s,1F1D1D|c,lg,0,363433,1.0,2E2B2A,0.0&chxs=0,FFFFFF,12,0|1,FFFFFF,12,0|2,FFFFFF,12,0&chd=e:MzAAAAGaAAAATNGaTNgAGaGaTNAAAAAAAAAAAAAAZmTNGaMz&chxl=0:||2|5|1:|Hits|2:|14%3A00|18%3A00|02%3A00|09%3A00|14%3A00");
+		awardScreen.setupModel(tree.eventModel);
 		awardScreen.setup("League Table", "img/awards-icon.png");
 		
 		

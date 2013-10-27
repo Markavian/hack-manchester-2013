@@ -1,6 +1,6 @@
 package bbc.hackmanchester.pressred.ui;
 
-import bbc.hackmanchester.pressred.model.TimerModel;
+import bbc.hackmanchester.pressred.model.EventModel;
 import bbc.hackmanchester.pressred.core.Text;
 import flash.text.TextField;
 import flash.text.TextFormatAlign;
@@ -12,7 +12,7 @@ import flash.events.Event;
  */
 class TimerUI extends BaseUI
 {
-	var model:TimerModel;
+	var model:EventModel;
 	
 	var iconClock:BitmapUI;
 	var textTime:TextField;
@@ -36,7 +36,7 @@ class TimerUI extends BaseUI
 		artwork.addEventListener(Event.ENTER_FRAME, onEnterFrame);
 	}
 	
-	public function setup(model:TimerModel)
+	public function setup(model:EventModel)
 	{
 		this.model = model;
 		
