@@ -50,7 +50,7 @@ public class Graph {
 		
 		// Defining chart.
 		LineChart chart = GCharts.newLineChart(line1);
-		chart.setSize(600, 450);
+		chart.setSize(800, 600);
 		chart.setTitle("Git Commits per hour", WHITE, 14);
 		chart.setGrid(5, 5, 10, 1);
 
