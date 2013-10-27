@@ -48,8 +48,28 @@ public class News {
             JsonArray statusesArray = statusesElement.getAsJsonArray();
             for (JsonElement element: statusesArray) {
                 JsonObject jsonObject = element.getAsJsonObject();
+                String mediaUrl = "";
 
-                newsItems.add(new NewsItem(jsonObject.get("created_at").getAsString(), jsonObject.get("text").toString()));
+                if (jsonObject.get("entities") != null) {
+                    JsonObject jsonEntitiesObject = jsonObject.get("entities").getAsJsonObject();
+
+                    if (jsonEntitiesObject.get("media") != null) {
+                        JsonArray jsonMediaArray = jsonEntitiesObject.get("media").getAsJsonArray();
+
+                        JsonObject jsonMediaObject = jsonMediaArray.get(0).getAsJsonObject();
+
+                        if (jsonMediaObject.get("media_url_https") != null) {
+                            JsonElement jsonMediaUrlElement = jsonMediaObject.get("media_url_https");
+                            System.out.println(jsonMediaUrlElement.getAsString());
+                            mediaUrl = jsonMediaUrlElement.getAsString();
+                        }
+                    }
+                }
+
+                newsItems.add(new NewsItem(
+                        jsonObject.get("created_at").getAsString(),
+                        jsonObject.get("text").toString(),
+                        mediaUrl));
             }
         }
 
