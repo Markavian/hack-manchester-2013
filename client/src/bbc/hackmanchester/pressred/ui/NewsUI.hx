@@ -37,9 +37,9 @@ class NewsUI extends BaseUI
 	
 	function redraw()
 	{
-		for (row in rows)
+		while (rows.length > 0)
 		{
-			artwork.removeChild(row.artwork);
+			artwork.removeChild(rows.pop().artwork);
 		}
 		
 		var lastRow:BaseUI = null;
