@@ -2,12 +2,10 @@ package controllers;
 
 import data.EventData;
 import models.Event;
-import play.mvc.*;
+import play.mvc.Controller;
+import services.DateTimeToStringConvertor;
 
-import java.text.DateFormat;
 import java.text.MessageFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 public class EventController extends Controller {
 
@@ -15,14 +13,8 @@ public class EventController extends Controller {
         EventData eventData = Event.getEvent();
 
         String jsonString = MessageFormat.format("'{'\"startTime\": \"{0}\", \"endTime\": \"{1}\"'}'",
-                getDateTimeAsIsoString(eventData.startTime),
-                getDateTimeAsIsoString(eventData.endTime));
+                DateTimeToStringConvertor.getDateTimeAsHaxeCompatibleString(eventData.startTime),
+                DateTimeToStringConvertor.getDateTimeAsHaxeCompatibleString(eventData.endTime));
         renderJSON(jsonString);
-    }
-
-    private static String getDateTimeAsIsoString(Calendar dateTime) {
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return df.format(dateTime.getTime());
     }
 }

@@ -1,14 +1,13 @@
 package data;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import org.joda.time.DateTime;
 
 public class EventData {
-    public Calendar startTime;
-    public Calendar endTime;
+    public DateTime startTime;
+    public DateTime endTime;
 
     public EventData() {
-        this.startTime = new GregorianCalendar(2013, 10, 26, 14, 00);
-        this.endTime = new GregorianCalendar(2013, 10, 27, 14, 00);
+        this.startTime = new DateTime(2013, 10, 26, 14, 00);
+        this.endTime = new DateTime(2013, 10, 27, 14, 00);
     }
 }
