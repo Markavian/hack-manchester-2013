@@ -11,13 +11,13 @@ class TimetableUI extends BaseUI
 {
 	var model:TimetableModel;
 	
-	var rows:Array<TimetableRowUI>;
+	var rows:Array<BaseUI>;
 
 	public function new() 
 	{
 		super();
 		
-		rows = new Array<TimetableRowUI>();
+		rows = new Array<BaseUI>();
 	}
 	
 	public function setup(model:TimetableModel)
@@ -36,9 +36,9 @@ class TimetableUI extends BaseUI
 	
 	function redraw()
 	{
-		for (row in rows)
+		while (rows.length > 0)
 		{
-			artwork.removeChild(row.artwork);
+			artwork.removeChild(rows.pop().artwork);
 		}
 		
 		var lastRow:BaseUI = null;
@@ -48,6 +48,7 @@ class TimetableUI extends BaseUI
 			section.setup(dayModel.day);
 			
 			addUI(section);
+			rows.push(section);
 			
 			if (lastRow != null)
 			{
@@ -61,6 +62,7 @@ class TimetableUI extends BaseUI
 				row.setup(eventModel);
 				
 				addUI(row);
+				rows.push(row);
 				
 				if (lastRow != null)
 				{
