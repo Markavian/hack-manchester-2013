@@ -30,7 +30,7 @@ class DataController
 		globalTree = tree;
 		
 		timerAdapter.setup(SERVER + "/event", globalTree.hackTimer);
-		timetableAdapter.setup(SERVER + "timetable.json", globalTree.timetable);
+		timetableAdapter.setup(SERVER + "/timetable", globalTree.timetable);
 	}
 	
 }
