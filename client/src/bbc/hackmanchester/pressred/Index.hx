@@ -2,6 +2,7 @@ package bbc.hackmanchester.pressred;
 
 import bbc.hackmanchester.pressred.controller.ScreenController;
 import bbc.hackmanchester.pressred.controller.DataController;
+import bbc.hackmanchester.pressred.controller.KeyController;
 import bbc.hackmanchester.pressred.screen.NewsScreen;
 import bbc.hackmanchester.pressred.screen.Screen;
 import bbc.hackmanchester.pressred.screen.SplashScreen;
@@ -30,6 +31,7 @@ class Index
 	public var tree:GlobalTree;
 	public var screenController:ScreenController;
 	public var dataController:DataController;
+	public var keyController:KeyController;
 	
 	public var tabs:TabUI;
 	public var splashScreen:SplashScreen;
@@ -61,6 +63,9 @@ class Index
 		
 		dataController = new DataController();
 		dataController.setup(tree);
+		
+		keyController = new KeyController();
+		keyController.setup(artwork.stage);
 		
 		// top level tab screens
 		splashScreen = cast addScreen(new SplashScreen());

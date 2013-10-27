@@ -49,6 +49,7 @@ class NewsUI extends BaseUI
 			row.setup(newsItemModel);
 			
 			addUI(row);
+			rows.push(row);
 			
 			if (lastRow != null)
 			{
