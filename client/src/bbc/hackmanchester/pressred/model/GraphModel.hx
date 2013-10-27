@@ -16,7 +16,7 @@ class GraphModel extends BaseModel
 		if (object == null)
 			return;
 			
-		this.graphUrl = Reflect.hasField(object, "graph") ? object.time : "";
+		this.graphUrl = Reflect.hasField(object, "graph") ? object.graph : "";
 		
 		updated.dispatch(this);
 	}
