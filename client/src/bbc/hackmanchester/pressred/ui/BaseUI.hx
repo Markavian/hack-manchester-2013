@@ -5,7 +5,7 @@ import flash.display.Sprite;
 import flash.geom.Rectangle;
 
 /**
- * Base clas for all onscreen UI elements
+ * Base class for all onscreen UI elements
  * @author John Beech
  */
 class BaseUI

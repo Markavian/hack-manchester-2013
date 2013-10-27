@@ -1,5 +1,6 @@
 package bbc.hackmanchester.pressred.controller;
 
+import bbc.hackmanchester.pressred.adapater.NewsAdapter;
 import bbc.hackmanchester.pressred.model.GlobalTree;
 import bbc.hackmanchester.pressred.adapater.TimerAdapter;
 import bbc.hackmanchester.pressred.adapater.TimetableAdapter;
@@ -16,6 +17,7 @@ class DataController
 	
 	var timerAdapter:TimerAdapter;
 	var timetableAdapter:TimetableAdapter;
+	var newsAdapter:NewsAdapter;
 
 	public function new() 
 	{
@@ -23,6 +25,7 @@ class DataController
 		
 		timerAdapter = new TimerAdapter();
 		timetableAdapter = new TimetableAdapter();
+		newsAdapter = new NewsAdapter();
 	}
 	
 	public function setup(tree:GlobalTree)
@@ -31,6 +34,7 @@ class DataController
 		
 		timerAdapter.setup(SERVER + "/event", globalTree.hackTimer);
 		timetableAdapter.setup(SERVER + "/timetable", globalTree.timetable);
+		newsAdapter.setup(SERVER + "/news", globalTree.news);
 	}
 	
 }

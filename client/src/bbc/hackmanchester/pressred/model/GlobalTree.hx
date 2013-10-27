@@ -8,6 +8,7 @@ class GlobalTree extends BaseModel
 {
 	public var hackTimer:TimerModel;
 	public var timetable:TimetableModel;
+	public var news:NewsModel;
 
 	public function new() 
 	{
@@ -15,5 +16,6 @@ class GlobalTree extends BaseModel
 		
 		hackTimer = new TimerModel();
 		timetable = new TimetableModel();
+		news = new NewsModel();
 	}
 }

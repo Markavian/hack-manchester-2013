@@ -2,6 +2,7 @@ package bbc.hackmanchester.pressred;
 
 import bbc.hackmanchester.pressred.controller.ScreenController;
 import bbc.hackmanchester.pressred.controller.DataController;
+import bbc.hackmanchester.pressred.screen.NewsScreen;
 import bbc.hackmanchester.pressred.screen.Screen;
 import bbc.hackmanchester.pressred.screen.SplashScreen;
 import bbc.hackmanchester.pressred.screen.ScreenWithTitle;
@@ -32,7 +33,7 @@ class Index
 	
 	public var tabs:TabUI;
 	public var splashScreen:SplashScreen;
-	public var streamScreen:ScreenWithTitle;
+	public var streamScreen:NewsScreen;
 	public var personScreen:ScreenWithTitle;
 	public var starScreen:ScreenWithTitle;
 	public var awardScreen:ScreenWithTitle;
@@ -65,8 +66,9 @@ class Index
 		splashScreen = cast addScreen(new SplashScreen());
 		splashScreen.setup(tree.hackTimer);
 		
-		streamScreen = cast addScreen(new ScreenWithTitle());
-		streamScreen.setup("Streams", "img/stream-icon.png");
+		streamScreen = cast addScreen(new NewsScreen());
+		streamScreen.setup("News", "img/stream-icon.png");
+		streamScreen.setupModel(tree.news);
 		
 		personScreen = cast addScreen(new ScreenWithTitle());
 		personScreen.setup("Personal Info", "img/person-icon.png");

@@ -10,7 +10,7 @@ import openfl.Assets;
 
 
 /**
- * Bitmap wrapper, for centering assets
+ * Button + bitmap wrapper for handling and animating touch events
  * @author John Beech
  */
 class ButtonUI extends BaseUI

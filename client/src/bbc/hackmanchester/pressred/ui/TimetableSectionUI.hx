@@ -7,7 +7,7 @@ import flash.text.TextFormatAlign;
 import flash.events.Event;
 
 /**
- * Timer UI shows how many hours left in the Hack
+ * A section title in a timetable
  * @author John Beech
  */
 class TimetableSectionUI extends BaseUI
