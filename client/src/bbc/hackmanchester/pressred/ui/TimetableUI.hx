@@ -1,6 +1,7 @@
 package bbc.hackmanchester.pressred.ui;
 
 import bbc.hackmanchester.pressred.model.TimetableModel;
+import flash.display.DisplayObject;
 
 /**
  * Represents a timetable of events happening soon
@@ -40,19 +41,34 @@ class TimetableUI extends BaseUI
 			artwork.removeChild(row.artwork);
 		}
 		
-		var lastRow:TimetableRowUI = null;
-		for (model in model.events)
-		{
-			var row = new TimetableRowUI();
-			row.setup(model);
+		var lastRow:BaseUI = null;
+		for (dayModel in model.days)
+		{				
+			var section = new TimetableSectionUI();
+			section.setup(dayModel.day);
 			
-			addUI(row);
+			addUI(section);
 			
 			if (lastRow != null)
 			{
-				alignBottom(row.artwork, lastRow.artwork);
+				alignBottom(section.artwork, lastRow.artwork);
 			}
-			lastRow = row;
+			lastRow = section;
+			
+			for (eventModel in dayModel.events)
+			{
+				var row = new TimetableRowUI();
+				row.setup(eventModel);
+				
+				addUI(row);
+				
+				if (lastRow != null)
+				{
+					alignBottom(row.artwork, lastRow.artwork);
+				}
+				lastRow = row;
+			}
+			
 		}
 	}
 	

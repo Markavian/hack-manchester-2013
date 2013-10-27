@@ -2,32 +2,27 @@ package bbc.hackmanchester.pressred.model;
 
 class TimetableModel extends BaseModel
 {
-	public var events:Array<TimetableRowModel>;
+	public var days:Array<TimetableDayModel>;
 
 	public function new() 
 	{
 		super();
 		
-		events = new Array<TimetableRowModel>();
+		days = new Array<TimetableDayModel>();
 	}
 	
 	public function readFrom(object:Dynamic):Void
 	{
 		if (object == null)
 			return;
-			
-		// step down from days to day
-		object = object[0];
-			
-		if (Reflect.hasField(object, "events"))
+		
+		days = new Array<TimetableDayModel>();
+		var daysArray:Array<Dynamic> = object;
+		for (item in daysArray)
 		{
-			var eventsArray:Array<Dynamic> = object.events;
-			for (item in eventsArray)
-			{
-				var event = new TimetableRowModel();
-				event.readFrom(item);
-				events.push(event);
-			}
+			var day = new TimetableDayModel();
+			day.readFrom(item);
+			days.push(day);
 		}
 		
 		updated.dispatch(this);

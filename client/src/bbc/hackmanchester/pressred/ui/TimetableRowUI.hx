@@ -25,7 +25,7 @@ class TimetableRowUI extends BaseUI
 		artwork.addChild(textTime);
 		
 		textName = Text.makeTextField("fonts/OpenSans-Regular.ttf", 30, 0x202020, TextFormatAlign.LEFT, false);
-		textName.width = 200;
+		textName.width = 500;
 		textName.height = 40;
 		textName.x = 160;
 		artwork.addChild(textName);
